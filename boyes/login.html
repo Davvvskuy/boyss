@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - Boyes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      display: none;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Login Boyes</h2>
+    <div class="error" id="error">Username atau password salah!</div>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+  const user = document.getElementById('username').value;
+  const pass = document.getElementById('password').value;
+  const errorDiv = document.getElementById('error');
+
+  const dummyUser = "admin";
+  const dummyPass = "12345";
+
+  if(user === dummyUser && pass === dummyPass) {
+    localStorage.setItem('loggedIn', 'true');
+    localStorage.setItem('username', user); // simpan username
+    window.location.href = "boyes.html";  // redirect ke halaman utama
+  } else {
+    errorDiv.style.display = "block";
+  }
+}
+  </script>
+</body>
+</html>
